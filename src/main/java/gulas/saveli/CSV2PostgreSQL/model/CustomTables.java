@@ -1,5 +1,6 @@
-package gulas.saveli.CSV2PostgreSQL.custom;
+package gulas.saveli.CSV2PostgreSQL.model;
 
+import gulas.saveli.CSV2PostgreSQL.model.DynamicField;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -17,5 +18,5 @@ public class CustomTables {
     @GeneratedValue
     private Long id;
 
-    private Map<String, DynamicFieldEntity>
+    private Map<String, DynamicField>
 }
