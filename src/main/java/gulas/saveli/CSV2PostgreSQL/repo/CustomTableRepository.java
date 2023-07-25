@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CustomTableRepository extends JpaRepository<CustomTable, Long> {
+    CustomTable findByName(String name);
 }
