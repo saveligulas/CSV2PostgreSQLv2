@@ -14,10 +14,13 @@ public class CustomTableService {
     @Autowired
     private final CustomTableRepository customTableRepository;
 
-    public void createCustomTable(List<String> fieldKeys) {
+    public void createCustomTable(List<String> fieldKeys, String name) {
         CustomTable customTable = new CustomTable();
         customTable.setOrderedKeys(fieldKeys);
+        customTable.setName(name);
     }
 
-    public
+    public addDynamicFieldToTable() {
+
+    }
 }
