@@ -1,6 +1,7 @@
 package gulas.saveli.CSV2PostgreSQL.logic;
 
 import gulas.saveli.CSV2PostgreSQL.model.CustomTable;
+import gulas.saveli.CSV2PostgreSQL.model.DynamicField;
 import gulas.saveli.CSV2PostgreSQL.repo.CustomTableRepository;
 import gulas.saveli.CSV2PostgreSQL.repo.DynamicFieldRepository;
 import lombok.RequiredArgsConstructor;
@@ -25,6 +26,7 @@ public class CustomTableService {
     }
 
     public void addDynamicFieldToTable(String name, Long dynamicFieldId) {
-
+        DynamicField dynamicField = dynamicFieldRepository.findById(dynamicFieldId)
+                .orElseThrow(() -> new RuntimeException("DynamicField could not be found"));
     }
 }
