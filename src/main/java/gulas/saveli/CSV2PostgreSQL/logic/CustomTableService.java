@@ -7,6 +7,7 @@ import gulas.saveli.CSV2PostgreSQL.repo.DynamicFieldRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -25,8 +26,14 @@ public class CustomTableService {
         customTableRepository.save(customTable);
     }
 
+    @Transactional
     public void addDynamicFieldToTable(String name, Long dynamicFieldId) {
         DynamicField dynamicField = dynamicFieldRepository.findById(dynamicFieldId)
                 .orElseThrow(() -> new RuntimeException("DynamicField could not be found"));
+        CustomTable customTable = customTableRepository.findByName(name);
+        if(customTable == null) {
+            throw new RuntimeException("CustomTable could not be found");
+        }
+
     }
 }
