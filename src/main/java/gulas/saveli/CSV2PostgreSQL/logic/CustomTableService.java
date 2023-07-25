@@ -18,9 +18,10 @@ public class CustomTableService {
         CustomTable customTable = new CustomTable();
         customTable.setOrderedKeys(fieldKeys);
         customTable.setName(name);
+        customTableRepository.save(customTable);
     }
 
-    public addDynamicFieldToTable() {
+    public void addDynamicFieldToTable(String name, Long dynamicFieldId) {
 
     }
 }
