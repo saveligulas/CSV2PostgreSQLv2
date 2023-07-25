@@ -10,6 +10,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.List;
+
 @Configuration
 @RequiredArgsConstructor
 public class TestConfig {
@@ -26,7 +28,8 @@ public class TestConfig {
     @Bean
     CommandLineRunner commandLineRunner() {
         return args -> {
-
+            dynamicFieldService.createDynamicField("testValue");
+            customTableService.createCustomTable(List.of("testKey"));
         };
     }
 }
