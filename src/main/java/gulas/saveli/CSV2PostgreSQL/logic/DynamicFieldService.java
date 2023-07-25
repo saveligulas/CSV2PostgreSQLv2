@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class DynamicFieldService {
@@ -14,7 +16,7 @@ public class DynamicFieldService {
 
     public void createDynamicField(String value) {
         DynamicField field = new DynamicField();
-        field.setValue(value);
+        field.setValues(List.of(value));
         dynamicFieldRepository.save(field);
     }
 }
