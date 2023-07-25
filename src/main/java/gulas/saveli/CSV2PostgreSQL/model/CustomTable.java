@@ -18,6 +18,7 @@ public class CustomTable {
     @Id
     @GeneratedValue
     private Long id;
+    private String name;
 
     @OrderColumn
     private List<String> orderedKeys = new ArrayList<>();
