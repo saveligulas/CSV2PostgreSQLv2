@@ -16,11 +16,13 @@ public class DynamicField {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String fieldName;
+
     @ManyToOne
     @JoinColumn(name = "custom_entity_id") // This specifies the column with the foreign key to the main_table
     private CustomTable customTable;
 
     @OrderColumn
-    private List<String> value;
+    private List<String> values;
 
 }
