@@ -3,6 +3,8 @@ package gulas.saveli.CSV2PostgreSQL.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -18,6 +20,7 @@ public class DynamicField {
     @JoinColumn(name = "custom_entity_id") // This specifies the column with the foreign key to the main_table
     private CustomTable customTable;
 
-    private String value;
+    @OrderColumn
+    private List<String> value;
 
 }
