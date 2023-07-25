@@ -15,5 +15,6 @@ public class DynamicFieldService {
     public void createDynamicField(String value) {
         DynamicField field = new DynamicField();
         field.setValue(value);
+        dynamicFieldRepository.save(field);
     }
 }
