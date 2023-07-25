@@ -35,6 +35,6 @@ public class CustomTableService {
             throw new RuntimeException("CustomTable could not be found");
         }
 
-        customTable.getDynamicFields().put(key, dynamicField); //TODO redo method with method to add to list
+        customTable.getDynamicFields().put(key, List.of(dynamicField)); //TODO redo method with method to add to list
     }
 }
