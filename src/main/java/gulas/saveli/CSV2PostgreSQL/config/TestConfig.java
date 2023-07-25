@@ -29,7 +29,7 @@ public class TestConfig {
     CommandLineRunner commandLineRunner() {
         return args -> {
             dynamicFieldService.createDynamicField("testValue");
-            customTableService.createCustomTable(List.of("testKey"));
+            customTableService.createCustomTable(List.of("testKey"), "testTable");
         };
     }
 }
