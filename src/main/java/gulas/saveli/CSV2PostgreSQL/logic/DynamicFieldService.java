@@ -10,4 +10,8 @@ import org.springframework.stereotype.Service;
 public class DynamicFieldService {
     @Autowired
     private final DynamicFieldRepository dynamicFieldRepository;
+
+    public void createDynamicField(String value) {
+
+    }
 }
