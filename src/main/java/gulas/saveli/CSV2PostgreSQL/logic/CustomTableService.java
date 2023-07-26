@@ -1,8 +1,10 @@
 package gulas.saveli.CSV2PostgreSQL.logic;
 
 import gulas.saveli.CSV2PostgreSQL.model.CustomTable;
+import gulas.saveli.CSV2PostgreSQL.model.DynamicCategory;
 import gulas.saveli.CSV2PostgreSQL.model.DynamicField;
 import gulas.saveli.CSV2PostgreSQL.repo.CustomTableRepository;
+import gulas.saveli.CSV2PostgreSQL.repo.DynamicCategoryRepository;
 import gulas.saveli.CSV2PostgreSQL.repo.DynamicFieldRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,8 @@ public class CustomTableService {
     private final CustomTableRepository customTableRepository;
     @Autowired
     private final DynamicFieldRepository dynamicFieldRepository;
+    @Autowired
+    private final DynamicCategoryRepository dynamicCategoryRepository;
 
     public void createCustomTable(List<String> fieldKeys, String name) {
         CustomTable customTable = new CustomTable();
@@ -28,13 +32,15 @@ public class CustomTableService {
 
     @Transactional
     public void addDynamicFieldToTableTest(String name, Long fieldId, Long categoryId) {
-        DynamicField dynamicField = dynamicFieldRepository.findById(dynamicFieldId)
+        DynamicCategory dynamicCategory = dynamicCategoryRepository.findById(categoryId)
+                .orElseThrow(() -> new RuntimeException("DynamicCategory could not be found"));
+        DynamicField dynamicField = dynamicFieldRepository.findById(fieldId)
                 .orElseThrow(() -> new RuntimeException("DynamicField could not be found"));
         CustomTable customTable = customTableRepository.findByName(name);
         if(customTable == null) {
             throw new RuntimeException("CustomTable could not be found");
         }
 
-        customTable.getDynamicFields().put(key, dynamicField); //TODO redo method with method to add to list
+        customTable.getDynamicFields().put(dynamicCategory, dynamicField);
     }
 }
