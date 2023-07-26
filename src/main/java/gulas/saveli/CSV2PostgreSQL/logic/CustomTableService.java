@@ -27,7 +27,7 @@ public class CustomTableService {
     }
 
     @Transactional
-    public void addDynamicFieldToTableTest(String name, Long dynamicFieldId, String key) {
+    public void addDynamicFieldToTableTest(String name, Long fieldId, Long categoryId) {
         DynamicField dynamicField = dynamicFieldRepository.findById(dynamicFieldId)
                 .orElseThrow(() -> new RuntimeException("DynamicField could not be found"));
         CustomTable customTable = customTableRepository.findByName(name);
