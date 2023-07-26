@@ -27,5 +27,5 @@ public class CustomTable {
     @MapKey(name = "fieldName") //TODO create separate Key Entity class
     @OrderBy("id")
     @ToString.Exclude
-    private Map<String, DynamicField> dynamicFields = new HashMap<>();
+    private Map<DynamicCategory, DynamicField> dynamicFields = new HashMap<>();
 }
