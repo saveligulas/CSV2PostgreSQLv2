@@ -14,7 +14,7 @@ public class DynamicFieldService {
     @Autowired
     private final DynamicFieldRepository dynamicFieldRepository;
 
-    public void createDynamicField(String value) {
+    public void createDynamicField(String value) { //TODO redo method
         DynamicField field = new DynamicField();
         field.setValues(List.of(value));
         dynamicFieldRepository.save(field);
