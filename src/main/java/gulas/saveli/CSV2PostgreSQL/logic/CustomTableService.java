@@ -43,4 +43,8 @@ public class CustomTableService {
 
         customTable.getDynamicFields().put(dynamicCategory, dynamicField);
     }
+
+    public void testSaveCustomTable(String name, DynamicCategory category, DynamicField field) {
+
+    }
 }
