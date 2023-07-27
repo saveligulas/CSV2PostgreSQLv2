@@ -21,7 +21,7 @@ public class CustomTable {
     private String name;
 
     @OrderColumn
-    private List<String> orderedKeys = new ArrayList<>();
+    private List<Long> orderedKeyIds = new ArrayList<>();
 
     @OneToMany(mappedBy = "customTable", cascade = CascadeType.ALL, orphanRemoval = true)
     @MapKey(name = "dynamicCategory")
