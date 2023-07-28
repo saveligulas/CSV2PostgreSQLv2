@@ -15,8 +15,11 @@ import java.util.List;
 public class DynamicFieldService {
     @Autowired
     private final DynamicFieldRepository dynamicFieldRepository;
-    @Autowired
-    private final DynamicCategoryRepository dynamicCategoryRepository;
 
-    //TODO redo
+    public void createAndSaveDynamicField(String value, DynamicCategory category) {
+        DynamicField dynamicField = new DynamicField();
+        dynamicField.setValue(value);
+        dynamicField.setDynamicCategory(category);
+        dynamicFieldRepository.save(dynamicField);
+    }
 }
