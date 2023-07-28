@@ -27,5 +27,7 @@ public class CustomTable {
     @MapKey(name = "dynamicCategory")
     @OrderBy("id")
     @ToString.Exclude
-    private Map<DynamicCategory, DynamicField> dynamicFields = new HashMap<>(); //TODO change to List
+    //private Map<DynamicCategory, DynamicField> dynamicFields = new HashMap<>(); //TODO change to List
+
+    private List<DynamicField> dynamicFields = new ArrayList<>();
 }
