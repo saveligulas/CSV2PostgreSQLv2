@@ -34,8 +34,7 @@ public class TestConfig {
     @Bean
     CommandLineRunner commandLineRunner() {
         return args -> {
-            customTableService.createAndSaveCustomTable("testTable");
-//            CustomTable table = customTableRepository.findByName("testTable").get();
+            CustomTable table = customTableRepository.findByName("testTable").get();
 //            dynamicCategoryService.createAndSaveDynamicCategory("testCategory", table);
 //            DynamicCategory category = dynamicCategoryRepository.findByName("testCategory").get();
 //            dynamicFieldService.createAndSaveDynamicField("testField", category);
