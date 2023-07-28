@@ -27,4 +27,6 @@ public class CustomTable {
     @OrderColumn
     @ToString.Exclude
     private List<DynamicField> dynamicFields = new ArrayList<>();
+
+    private List<DynamicCategory> dynamicCategories = new ArrayList<>();
 }
