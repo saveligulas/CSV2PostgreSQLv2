@@ -25,5 +25,6 @@ public class CustomTable {
 
     @OneToMany(mappedBy = "customTable", cascade = CascadeType.ALL, orphanRemoval = true)
     @OrderColumn
+    @ToString.Exclude
     private List<DynamicField> dynamicFields = new ArrayList<>();
 }
