@@ -24,10 +24,6 @@ public class CustomTable {
     private List<Long> orderedKeyIds = new ArrayList<>();
 
     @OneToMany(mappedBy = "customTable", cascade = CascadeType.ALL, orphanRemoval = true)
-    @MapKey(name = "dynamicCategory")
-    @OrderBy("id")
-    @ToString.Exclude
-    //private Map<DynamicCategory, DynamicField> dynamicFields = new HashMap<>(); //TODO change to List
-
+    @OrderColumn
     private List<DynamicField> dynamicFields = new ArrayList<>();
 }
