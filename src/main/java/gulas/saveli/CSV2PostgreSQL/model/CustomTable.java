@@ -20,9 +20,6 @@ public class CustomTable {
     private Long id;
     private String name;
 
-    @OrderColumn
-    private List<Long> orderedKeyIds = new ArrayList<>();
-
     @OneToMany(mappedBy = "customTable", cascade = CascadeType.ALL, orphanRemoval = true)
     @OrderColumn
     @ToString.Exclude
