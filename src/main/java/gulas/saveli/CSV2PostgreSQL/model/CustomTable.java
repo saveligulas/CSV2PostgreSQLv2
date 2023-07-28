@@ -13,7 +13,7 @@ import java.util.Map;
 @Setter
 @ToString
 @RequiredArgsConstructor
-@Table(name= "main_table", schema= "converter")
+@Table(name= "custom_table", schema= "converter")
 public class CustomTable {
     @Id
     @GeneratedValue
@@ -26,7 +26,5 @@ public class CustomTable {
     @OneToMany(mappedBy = "customTable", cascade = CascadeType.ALL, orphanRemoval = true)
     @OrderColumn
     @ToString.Exclude
-    private List<DynamicField> dynamicFields = new ArrayList<>();
-
     private List<DynamicCategory> dynamicCategories = new ArrayList<>();
 }
