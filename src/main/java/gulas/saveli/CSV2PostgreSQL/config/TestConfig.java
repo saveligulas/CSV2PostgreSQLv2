@@ -28,12 +28,12 @@ public class TestConfig {
     @Autowired
     private final DynamicCategoryService dynamicCategoryService;
 
-    @Bean
-    CommandLineRunner commandLineRunner() {
-        return args -> {
-            dynamicFieldService.createDynamicField("testValue");
-            dynamicCategoryService.createDynamicCategory("testCategory");
-            customTableService.createCustomTable(List.of("testKey"), "testTable");
-        };
-    }
+//    @Bean
+//    CommandLineRunner commandLineRunner() {
+//        return args -> {
+//            dynamicFieldService.createDynamicField("testValue");
+//            dynamicCategoryService.createDynamicCategory("testCategory");
+//            customTableService.createCustomTable(List.of("testKey"), "testTable");
+//        };
+//    }
 }
