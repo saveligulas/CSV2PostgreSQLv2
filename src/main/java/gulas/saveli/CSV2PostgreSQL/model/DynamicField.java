@@ -20,7 +20,7 @@ public class DynamicField {
     private DynamicCategory dynamicCategory;
 
     @ManyToOne
-    @JoinColumn(name = "custom_entity_id")
+    @JoinColumn(name = "customTable_id")
     private CustomTable customTable;
 
     @OrderColumn
