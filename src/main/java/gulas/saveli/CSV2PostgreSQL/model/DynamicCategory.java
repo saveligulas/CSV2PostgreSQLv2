@@ -6,6 +6,8 @@ import jakarta.persistence.Id;
 import lombok.*;
 import org.hibernate.Hibernate;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -19,4 +21,6 @@ public class DynamicCategory {
     private Long id;
 
     private String name;
+
+    private List<DynamicField> dynamicFields = new ArrayList<>();
 }
