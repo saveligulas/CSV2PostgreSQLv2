@@ -1,5 +1,6 @@
 package gulas.saveli.CSV2PostgreSQL.logic;
 
+import gulas.saveli.CSV2PostgreSQL.model.CustomTable;
 import gulas.saveli.CSV2PostgreSQL.model.DynamicCategory;
 import gulas.saveli.CSV2PostgreSQL.repo.DynamicCategoryRepository;
 import gulas.saveli.CSV2PostgreSQL.repo.DynamicFieldRepository;
@@ -15,5 +16,10 @@ public class DynamicCategoryService {
     @Autowired
     private final DynamicCategoryRepository dynamicCategoryRepository;
 
-    //TODO redo
+    public void createAndSaveDynamicCategory(String name, CustomTable table) {
+        DynamicCategory category = new DynamicCategory();
+        category.setName(name);
+        category.setCustomTable(table);
+        dynamicCategoryRepository.save(category);
+    }
 }
