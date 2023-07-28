@@ -23,5 +23,9 @@ public class CustomTableService {
     @Autowired
     private final DynamicCategoryRepository dynamicCategoryRepository;
 
-    //TODO redo
+    public void createAndSaveCustomTable(String name) {
+        CustomTable table = new CustomTable();
+        table.setName(name);
+        customTableRepository.save(table);
+    }
 }
