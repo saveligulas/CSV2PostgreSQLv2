@@ -3,6 +3,8 @@ package gulas.saveli.CSV2PostgreSQL.config;
 import gulas.saveli.CSV2PostgreSQL.logic.CustomTableService;
 import gulas.saveli.CSV2PostgreSQL.logic.DynamicCategoryService;
 import gulas.saveli.CSV2PostgreSQL.logic.DynamicFieldService;
+import gulas.saveli.CSV2PostgreSQL.model.CustomTable;
+import gulas.saveli.CSV2PostgreSQL.model.DynamicCategory;
 import gulas.saveli.CSV2PostgreSQL.repo.CustomTableRepository;
 import gulas.saveli.CSV2PostgreSQL.repo.DynamicCategoryRepository;
 import gulas.saveli.CSV2PostgreSQL.repo.DynamicFieldRepository;
@@ -32,7 +34,11 @@ public class TestConfig {
     @Bean
     CommandLineRunner commandLineRunner() {
         return args -> {
-            d
+            customTableService.createAndSaveCustomTable("testTable");
+            CustomTable table = customTableRepository.findByName("testTable");
+            dynamicCategoryService.createAndSaveDynamicCategory("testCategory", table);
+            DynamicCategory category = dynamicCategoryRepository.findByName("testCategory");
+            dynamicFieldService.createAndSaveDynamicField("testField", category);
         };
     }
 }
