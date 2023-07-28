@@ -15,9 +15,5 @@ public class DynamicCategoryService {
     @Autowired
     private final DynamicCategoryRepository dynamicCategoryRepository;
 
-    public void createDynamicCategory(String name) {
-        DynamicCategory dynamicCategory = new DynamicCategory();
-        dynamicCategory.setName(name);
-        dynamicCategoryRepository.save(dynamicCategory); //TODO not save if with same name exists
-    }
+    //TODO redo
 }
