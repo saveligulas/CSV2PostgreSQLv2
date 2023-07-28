@@ -34,7 +34,7 @@ public class TestConfig {
     @Bean
     CommandLineRunner commandLineRunner() {
         return args -> {
-            DynamicCategory category = dynamicCategoryRepository.findByName("testCategory").get();
+            DynamicCategory category = dynamicCategoryRepository.findByName("testCategory").get(); //TODO test searching and if @OrderColumn is working
             dynamicFieldService.createAndSaveDynamicField("testField", category);
         };
     }
