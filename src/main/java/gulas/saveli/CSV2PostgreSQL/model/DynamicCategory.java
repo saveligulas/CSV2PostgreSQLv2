@@ -1,8 +1,6 @@
 package gulas.saveli.CSV2PostgreSQL.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.Hibernate;
 
@@ -15,6 +13,7 @@ import java.util.Objects;
 @Setter
 @ToString
 @RequiredArgsConstructor
+@Table(name = "dynamic_category")
 public class DynamicCategory {
     @Id
     @GeneratedValue
@@ -22,5 +21,12 @@ public class DynamicCategory {
 
     private String name;
 
+    @ManyToOne
+    @JoinColumn(name = "customTable_id")
+    private CustomTable customTable;
+
+    @OneToMany(mappedBy = "dynamicCategory", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OrderColumn
+    @ToString.Exclude
     private List<DynamicField> dynamicFields = new ArrayList<>();
 }
