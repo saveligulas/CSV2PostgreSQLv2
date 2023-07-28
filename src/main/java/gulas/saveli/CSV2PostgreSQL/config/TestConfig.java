@@ -4,6 +4,7 @@ import gulas.saveli.CSV2PostgreSQL.logic.CustomTableService;
 import gulas.saveli.CSV2PostgreSQL.logic.DynamicCategoryService;
 import gulas.saveli.CSV2PostgreSQL.logic.DynamicFieldService;
 import gulas.saveli.CSV2PostgreSQL.repo.CustomTableRepository;
+import gulas.saveli.CSV2PostgreSQL.repo.DynamicCategoryRepository;
 import gulas.saveli.CSV2PostgreSQL.repo.DynamicFieldRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ public class TestConfig {
     @Autowired
     private final CustomTableRepository customTableRepository;
     @Autowired
-    private final DynamicFieldRepository dynamicFieldRepository;
+    private final DynamicCategoryRepository dynamicCategoryRepository;
 
     @Autowired
     private final CustomTableService customTableService;
@@ -28,12 +29,10 @@ public class TestConfig {
     @Autowired
     private final DynamicCategoryService dynamicCategoryService;
 
-//    @Bean
-//    CommandLineRunner commandLineRunner() {
-//        return args -> {
-//            dynamicFieldService.createDynamicField("testValue");
-//            dynamicCategoryService.createDynamicCategory("testCategory");
-//            customTableService.createCustomTable(List.of("testKey"), "testTable");
-//        };
-//    }
+    @Bean
+    CommandLineRunner commandLineRunner() {
+        return args -> {
+            d
+        };
+    }
 }
