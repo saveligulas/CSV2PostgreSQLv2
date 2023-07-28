@@ -10,20 +10,16 @@ import java.util.List;
 @Setter
 @ToString
 @RequiredArgsConstructor
-@Table(name= "main_table", schema= "converter")
+@Table(name= "dynamic_field", schema= "converter")
 public class DynamicField {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
+    @JoinColumn(name = "dynamic_category_id")
     private DynamicCategory dynamicCategory;
 
-    @ManyToOne
-    @JoinColumn(name = "customTable_id")
-    private CustomTable customTable;
-
-    @OrderColumn
-    private List<String> values;
+    private String value;
 
 }
