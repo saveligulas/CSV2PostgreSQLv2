@@ -13,7 +13,7 @@ import java.util.Objects;
 @Setter
 @ToString
 @RequiredArgsConstructor
-@Table(name = "dynamic_category")
+@Table(name = "dynamic_category", schema = "converter")
 public class DynamicCategory {
     @Id
     @GeneratedValue
