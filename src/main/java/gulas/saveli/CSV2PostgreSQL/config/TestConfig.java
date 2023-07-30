@@ -34,8 +34,6 @@ public class TestConfig {
     @Bean
     CommandLineRunner commandLineRunner() {
         return args -> {
-            DynamicCategory category = dynamicCategoryRepository.findByName("testCategory").get(); //TODO test searching and if @OrderColumn is working | need to change creation so entities are added to list of their super Entity
-            dynamicFieldService.createAndSaveDynamicField("testField", category);
         };
     }
 }
