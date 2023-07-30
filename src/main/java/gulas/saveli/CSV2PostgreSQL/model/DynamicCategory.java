@@ -29,4 +29,8 @@ public class DynamicCategory {
     @OrderColumn
     @ToString.Exclude
     private List<DynamicField> dynamicFields = new ArrayList<>();
+
+    public void addDynamicField(DynamicField field) {
+        this.dynamicFields.add(field);
+    }
 }
