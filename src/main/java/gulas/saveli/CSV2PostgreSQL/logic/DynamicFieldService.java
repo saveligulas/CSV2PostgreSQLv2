@@ -8,6 +8,7 @@ import gulas.saveli.CSV2PostgreSQL.repo.DynamicFieldRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -24,8 +25,10 @@ public class DynamicFieldService {
         dynamicFieldRepository.save(dynamicField);
     }
 
+    @Transactional
     public void changeDynamicFieldValue(String newValue, Long id) {
         DynamicField dynamicField = dynamicFieldRepository.findById(id)
                 .orElseThrow(() -> new ApiRequestException("DynamicField with id " + id + " does not exist"));
+        dynamicField.setValue(newValue);
     }
 }
