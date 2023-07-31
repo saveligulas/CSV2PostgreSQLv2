@@ -34,6 +34,7 @@ public class TestConfig {
     @Bean
     CommandLineRunner commandLineRunner() {
         return args -> {
+            customTableService.changeName("name2", );
         };
     }
 }
