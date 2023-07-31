@@ -34,7 +34,7 @@ public class TestConfig {
     @Bean
     CommandLineRunner commandLineRunner() {
         return args -> {
-            customTableService.changeName("name2", );
+            dynamicFieldService.changeDynamicFieldValue("value2", 1L);
         };
     }
 }
