@@ -30,8 +30,10 @@ public class CustomTableService {
         customTableRepository.save(table);
     }
 
-    public void addDynamicCategory(String name, Long id) {
+    @Transactional
+    public void addDynamicCategory(DynamicCategory dynamicCategory, Long id) {
         CustomTable table = customTableRepository.findById(id)
                 .orElseThrow(() -> new ApiRequestException("Could not find CustomTable with id " + id + " could not be found"));
+        table.addDynamicCategory(dynamicCategory);
     }
 }
