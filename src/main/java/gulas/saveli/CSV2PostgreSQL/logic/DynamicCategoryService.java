@@ -26,6 +26,7 @@ public class DynamicCategoryService {
         dynamicCategoryRepository.save(category);
     }
 
+    @Transactional
     public void changeDynamicCategoryName(String name, Long id) {
         DynamicCategory category = dynamicCategoryRepository.findById(id)
                 .orElseThrow(() -> new ApiRequestException("Dynamic category with id " + id + " not found"));
