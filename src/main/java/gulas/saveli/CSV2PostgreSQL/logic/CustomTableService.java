@@ -1,5 +1,6 @@
 package gulas.saveli.CSV2PostgreSQL.logic;
 
+import gulas.saveli.CSV2PostgreSQL.errorHandler.handler.ApiRequestException;
 import gulas.saveli.CSV2PostgreSQL.model.CustomTable;
 import gulas.saveli.CSV2PostgreSQL.model.DynamicCategory;
 import gulas.saveli.CSV2PostgreSQL.model.DynamicField;
@@ -30,6 +31,7 @@ public class CustomTableService {
     }
 
     public void addDynamicCategory(String name, Long id) {
-
+        CustomTable table = customTableRepository.findById(id)
+                .orElseThrow(() -> new ApiRequestException("Could not find CustomTable with id " + id + " could not be found"));
     }
 }
