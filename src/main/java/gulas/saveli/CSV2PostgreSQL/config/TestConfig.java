@@ -34,7 +34,7 @@ public class TestConfig {
     @Bean
     CommandLineRunner commandLineRunner() {
         return args -> {
-            dynamicFieldService.changeDynamicFieldValue("value2", 1L);
+            dynamicCategoryService.changeDynamicCategoryName("newName", 2L);
         };
     }
 }
