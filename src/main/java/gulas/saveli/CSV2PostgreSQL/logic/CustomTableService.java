@@ -28,4 +28,8 @@ public class CustomTableService {
         table.setName(name);
         customTableRepository.save(table);
     }
+
+    public void addDynamicCategory(String name, Long id) {
+
+    }
 }
