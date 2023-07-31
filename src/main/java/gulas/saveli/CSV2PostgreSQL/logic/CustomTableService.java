@@ -36,4 +36,9 @@ public class CustomTableService {
                 .orElseThrow(() -> new ApiRequestException("Could not find CustomTable with id " + id + " could not be found"));
         table.addDynamicCategory(dynamicCategory);
     }
+
+    public void changeName(String name, Long id) {
+        CustomTable table = customTableRepository.findById(id)
+                .orElseThrow(() -> new ApiRequestException("Could not find CustomTable with id " + id + " could not be found"));
+    }
 }
