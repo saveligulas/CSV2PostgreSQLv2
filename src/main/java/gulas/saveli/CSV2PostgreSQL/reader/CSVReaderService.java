@@ -5,5 +5,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CSVReaderService {
-    private CSVReader csvReader;
+    public void readAndSaveCSVFile(String path) {
+
+    }
 }
