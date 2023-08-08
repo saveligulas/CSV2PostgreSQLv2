@@ -25,8 +25,8 @@ public class TXTReaderService {
     private String createSourcePath(String fileNameWithoutExtension) {
         return "src/main/resources/files/" + fileNameWithoutExtension + ".txt";
     }
-    public void readAndSaveTxtFile(String path) throws FileNotFoundException {
-        FileReader fileReader = new FileReader(path);
+    public void readAndSaveTxtFile(String fileNameWithoutExtension) throws FileNotFoundException {
+        FileReader fileReader = new FileReader(createSourcePath(fileNameWithoutExtension));
         BufferedReader bufferedReader = new BufferedReader(fileReader);
         try {
             String line;
