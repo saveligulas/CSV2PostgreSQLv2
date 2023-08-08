@@ -21,6 +21,10 @@ public class TXTReaderService {
     private final DynamicCategoryService dynamicCategoryService;
     @Autowired
     private final DynamicFieldService dynamicFieldService;
+
+    private String createSourcePath(String fileNameWithoutExtension) {
+        return "src/main/resources/files/" + fileNameWithoutExtension + ".txt";
+    }
     public void readAndSaveTxtFile(String path) throws FileNotFoundException {
         FileReader fileReader = new FileReader(path);
         BufferedReader bufferedReader = new BufferedReader(fileReader);
