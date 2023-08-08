@@ -5,6 +5,7 @@ import gulas.saveli.CSV2PostgreSQL.logic.DynamicCategoryService;
 import gulas.saveli.CSV2PostgreSQL.logic.DynamicFieldService;
 import gulas.saveli.CSV2PostgreSQL.model.CustomTable;
 import gulas.saveli.CSV2PostgreSQL.model.DynamicCategory;
+import gulas.saveli.CSV2PostgreSQL.reader.TXTReaderService;
 import gulas.saveli.CSV2PostgreSQL.repo.CustomTableRepository;
 import gulas.saveli.CSV2PostgreSQL.repo.DynamicCategoryRepository;
 import gulas.saveli.CSV2PostgreSQL.repo.DynamicFieldRepository;
@@ -30,6 +31,8 @@ public class TestConfig {
     private final DynamicFieldService dynamicFieldService;
     @Autowired
     private final DynamicCategoryService dynamicCategoryService;
+    @Autowired
+    private final TXTReaderService txtReaderService;
 
     @Bean
     CommandLineRunner commandLineRunner() {
