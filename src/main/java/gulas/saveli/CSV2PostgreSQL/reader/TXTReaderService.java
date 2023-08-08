@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -20,7 +21,7 @@ public class TXTReaderService {
     private final DynamicCategoryService dynamicCategoryService;
     @Autowired
     private final DynamicFieldService dynamicFieldService;
-    public void readAndSaveTxtFile(String path) {
+    public void readAndSaveTxtFile(String path) throws FileNotFoundException {
         FileReader fileReader = new FileReader(path);
         BufferedReader bufferedReader = new BufferedReader(fileReader);
         try {
