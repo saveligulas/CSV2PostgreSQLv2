@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.IOException;
 
 @Service
 @RequiredArgsConstructor
@@ -22,6 +23,10 @@ public class TXTReaderService {
     public void readAndSaveTxtFile(String path) {
         FileReader fileReader = new FileReader(path);
         BufferedReader bufferedReader = new BufferedReader(fileReader);
-        try
+        try {
+            while()
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
