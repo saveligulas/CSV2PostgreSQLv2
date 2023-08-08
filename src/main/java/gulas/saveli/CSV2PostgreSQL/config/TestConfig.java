@@ -37,7 +37,7 @@ public class TestConfig {
     @Bean
     CommandLineRunner commandLineRunner() {
         return args -> {
-            dynamicCategoryService.changeDynamicCategoryName("newName", 2L);
+            txtReaderService.readAndSaveTxtFile("src/main/resources/files/test.txt");
         };
     }
 }
