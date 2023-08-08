@@ -7,6 +7,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+
 @Service
 @RequiredArgsConstructor
 public class TXTReaderService {
@@ -17,6 +20,8 @@ public class TXTReaderService {
     @Autowired
     private final DynamicFieldService dynamicFieldService;
     public void readAndSaveTxtFile(String path) {
-
+        FileReader fileReader = new FileReader(path);
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+        try
     }
 }
