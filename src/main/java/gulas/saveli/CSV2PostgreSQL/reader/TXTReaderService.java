@@ -16,7 +16,7 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class TXTReaderService {
     @Autowired
-    private final CustomTableService service;
+    private final CustomTableService customTableService;
     @Autowired
     private final DynamicCategoryService dynamicCategoryService;
     @Autowired
@@ -29,9 +29,11 @@ public class TXTReaderService {
         FileReader fileReader = new FileReader(createSourcePath(fileNameWithoutExtension));
         BufferedReader bufferedReader = new BufferedReader(fileReader);
         try {
+            service.createAndSaveCustomTable(fileNameWithoutExtension);
+            se
             String line;
             while ((line = bufferedReader.readLine()) != null) {
-                System.out.println(line);
+
             }
         } catch (IOException e) {
             e.printStackTrace();
