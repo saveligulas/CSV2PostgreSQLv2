@@ -37,7 +37,7 @@ public class TestConfig {
     @Bean
     CommandLineRunner commandLineRunner() {
         return args -> {
-            txtReaderService.readAndSaveTxtFile("src/main/resources/files/test.txt");
+            txtReaderService.readAndSaveTxtFile("src/main/resources/files/test");
         };
     }
 }
