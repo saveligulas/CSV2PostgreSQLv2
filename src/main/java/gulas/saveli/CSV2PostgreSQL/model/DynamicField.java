@@ -20,6 +20,7 @@ public class DynamicField {
     @JoinColumn(name = "dynamic_category_id")
     private DynamicCategory dynamicCategory;
 
+    @Column(columnDefinition = "TEXT")
     private String value;
 
 }
