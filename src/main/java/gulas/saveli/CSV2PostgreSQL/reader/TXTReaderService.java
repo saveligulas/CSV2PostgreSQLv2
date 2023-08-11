@@ -37,11 +37,14 @@ public class TXTReaderService {
             customTableService.createAndSaveCustomTable(fileNameWithoutExtension);
             CustomTable table = customTableRepository.findByName(fileNameWithoutExtension)
                             .orElseThrow(() -> new ApiRequestException("Could not find custom table " + fileNameWithoutExtension));
-            dynamicCategoryService.createAndSaveDynamicCategory("TXT_Body", );
+            dynamicCategoryService.createAndSaveDynamicCategory("TXT_Body", table);
             String line;
+            StringBuilder builder = new StringBuilder();
             while ((line = bufferedReader.readLine()) != null) {
-
+                builder.append(line).append("\n");
             }
+            String text = builder.toString();
+            dy
         } catch (IOException e) {
             e.printStackTrace();
         }
