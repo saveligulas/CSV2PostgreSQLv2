@@ -11,7 +11,8 @@ public class CSVReaderService {
     private String createSourcePath(String fileNameWithoutExtension) {
         return "src/main/resources/files/" + fileNameWithoutExtension + ".csv";
     }
-    public void readAndSaveCSVFile(String path) {
+    public void readAndSaveCSVFile(String fileNameWithoutExtension) {
+        String path = createSourcePath(fileNameWithoutExtension);
 
     }
 }
