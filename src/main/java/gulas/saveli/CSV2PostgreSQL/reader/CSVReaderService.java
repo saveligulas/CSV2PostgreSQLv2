@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -20,6 +22,7 @@ public class CSVReaderService {
         CSVReader reader = new CSVReader(new FileReader(path));
         try {
             String[] headers = reader.readNext();
+            Map<String, List<String>> columns = new HashMap<>();
 
         } catch (IOException e) {
 
