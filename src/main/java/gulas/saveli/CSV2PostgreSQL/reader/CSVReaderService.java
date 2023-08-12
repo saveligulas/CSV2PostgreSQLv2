@@ -4,6 +4,8 @@ import au.com.bytecode.opencsv.CSVReader;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+
 @Service
 @RequiredArgsConstructor
 public class CSVReaderService {
@@ -13,6 +15,10 @@ public class CSVReaderService {
     }
     public void readAndSaveCSVFile(String fileNameWithoutExtension) {
         String path = createSourcePath(fileNameWithoutExtension);
+        try {
 
+        } catch (IOException e) {
+
+        }
     }
 }
