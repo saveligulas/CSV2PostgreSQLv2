@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class CSVReaderService {
 
-    private String createSourcePath(String filenameWithoutExtension) {
-
+    private String createSourcePath(String fileNameWithoutExtension) {
+        return "src/main/resources/files/" + fileNameWithoutExtension + ".csv";
     }
     public void readAndSaveCSVFile(String path) {
 
