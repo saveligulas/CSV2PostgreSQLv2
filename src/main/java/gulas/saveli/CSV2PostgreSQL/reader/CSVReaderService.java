@@ -29,6 +29,10 @@ public class CSVReaderService {
                 for (String header : headers) {
                     columns.put(header, new ArrayList<>());
                 }
+                String[] line;
+                while ((line = reader.readNext()) != null) {
+
+                }
             }
 
         } catch (IOException e) {
