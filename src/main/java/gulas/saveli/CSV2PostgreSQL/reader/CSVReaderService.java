@@ -31,7 +31,12 @@ public class CSVReaderService {
                 }
                 String[] line;
                 while ((line = reader.readNext()) != null) {
-
+                    for (int i = 0; i < line.length; i++) {
+                        String header = headers[i];
+                        if (columns.containsKey(header)) {
+                            columns.get(header).add(line[i]);
+                        }
+                    }
                 }
             }
 
