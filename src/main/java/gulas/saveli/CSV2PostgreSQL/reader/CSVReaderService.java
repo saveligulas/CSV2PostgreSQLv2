@@ -9,6 +9,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
@@ -23,6 +24,9 @@ public class CSVReaderService {
         try {
             String[] headers = reader.readNext();
             Map<String, List<String>> columns = new HashMap<>();
+            if (headers != null) {
+
+            }
 
         } catch (IOException e) {
 
