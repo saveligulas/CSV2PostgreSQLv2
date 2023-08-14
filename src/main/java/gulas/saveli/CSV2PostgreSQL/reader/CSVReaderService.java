@@ -38,6 +38,7 @@ public class CSVReaderService {
                         }
                     }
                 }
+                System.out.println(columns);
             }
 
         } catch (IOException e) {
