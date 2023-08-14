@@ -40,7 +40,7 @@ public class TestConfig {
     @Bean
     CommandLineRunner commandLineRunner() {
         return args -> {
-
+            csvReaderService.readAndSaveCSVFile("organizations-100");
         };
     }
 }
