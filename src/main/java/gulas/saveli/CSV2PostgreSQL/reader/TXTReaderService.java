@@ -39,7 +39,7 @@ public class TXTReaderService {
         BufferedReader bufferedReader = new BufferedReader(fileReader);
         String categoryName = "TXT_Body";
         try {
-            customTableService.createAndSaveCustomTable(fileNameWithoutExtension);
+            customTableService.createAndSaveCustomTable(fileNameWithoutExtension, "txt");
             CustomTable table = customTableRepository.findByName(fileNameWithoutExtension)
                             .orElseThrow(() -> new ApiRequestException("Could not find custom table " + fileNameWithoutExtension));
             dynamicCategoryService.createAndSaveDynamicCategory(categoryName, table);
