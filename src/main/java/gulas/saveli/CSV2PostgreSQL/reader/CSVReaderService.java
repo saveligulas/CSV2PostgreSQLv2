@@ -1,7 +1,11 @@
 package gulas.saveli.CSV2PostgreSQL.reader;
 
 import au.com.bytecode.opencsv.CSVReader;
+import gulas.saveli.CSV2PostgreSQL.logic.CustomTableService;
+import gulas.saveli.CSV2PostgreSQL.logic.DynamicCategoryService;
+import gulas.saveli.CSV2PostgreSQL.logic.DynamicFieldService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.FileNotFoundException;
@@ -15,6 +19,12 @@ import java.util.Map;
 @Service
 @RequiredArgsConstructor
 public class CSVReaderService {
+    @Autowired
+    private final CustomTableService customTableService;
+    @Autowired
+    private final DynamicCategoryService categoryService;
+    @Autowired
+    private final DynamicFieldService fieldService;
 
     private String createSourcePath(String fileNameWithoutExtension) {
         return "src/main/resources/files/" + fileNameWithoutExtension + ".csv";
@@ -38,7 +48,7 @@ public class CSVReaderService {
                         }
                     }
                 }
-                System.out.println(columns);
+
             }
 
         } catch (IOException e) {
