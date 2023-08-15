@@ -24,11 +24,14 @@ public class CustomTableService {
     @Autowired
     private final DynamicCategoryRepository dynamicCategoryRepository;
 
-    public void createAndSaveCustomTable(String name, String extension) {
+    public CustomTable createSaveAndGetCustomTable(String name, String extension) {
         CustomTable table = new CustomTable();
         table.setName(name);
         table.setExtension(extension);
         customTableRepository.save(table);
+        return customTableRepository.findByName(name)
+                .orElseThrow(() -> new ApiRequestException("Could not find CustomTable with name " + name));
+
     }
 
     @Transactional
