@@ -55,8 +55,8 @@ public class CSVReaderService {
                         }
                     }
                 }
-
             }
+            customTableService.createAndSaveCustomTable(fileNameWithoutExtension);
 
         } catch (IOException e) {
             e.printStackTrace();
