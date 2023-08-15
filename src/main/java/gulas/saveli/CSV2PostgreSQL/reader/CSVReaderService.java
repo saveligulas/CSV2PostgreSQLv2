@@ -4,6 +4,8 @@ import au.com.bytecode.opencsv.CSVReader;
 import gulas.saveli.CSV2PostgreSQL.logic.CustomTableService;
 import gulas.saveli.CSV2PostgreSQL.logic.DynamicCategoryService;
 import gulas.saveli.CSV2PostgreSQL.logic.DynamicFieldService;
+import gulas.saveli.CSV2PostgreSQL.repo.CustomTableRepository;
+import gulas.saveli.CSV2PostgreSQL.repo.DynamicCategoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,6 +27,11 @@ public class CSVReaderService {
     private final DynamicCategoryService categoryService;
     @Autowired
     private final DynamicFieldService fieldService;
+
+    @Autowired
+    private final CustomTableRepository customTableRepository;
+    @Autowired
+    private final DynamicCategoryRepository categoryRepository;
 
     private String createSourcePath(String fileNameWithoutExtension) {
         return "src/main/resources/files/" + fileNameWithoutExtension + ".csv";
