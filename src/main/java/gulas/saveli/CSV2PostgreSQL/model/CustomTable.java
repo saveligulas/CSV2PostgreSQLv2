@@ -19,6 +19,7 @@ public class CustomTable {
     @GeneratedValue
     private Long id;
     private String name;
+    private String extension;
 
     @OneToMany(mappedBy = "customTable", cascade = CascadeType.ALL, orphanRemoval = true)
     @OrderColumn
