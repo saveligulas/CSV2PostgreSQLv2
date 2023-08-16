@@ -31,7 +31,8 @@ public class DynamicCategoryService {
         category.setName(name);
         category.setCustomTable(table);
         dynamicCategoryRepository.save(category);
-        dynamicCategoryRepository.findByName(name);
+        return dynamicCategoryRepository.findByName(name)
+                .orElseThrow(() -> new ApiRequestException("Could not find dynamic category with name " + name));
     }
 
     @Transactional
