@@ -22,16 +22,14 @@ public class DynamicCategoryService {
 
     public DynamicCategory createSaveAndGetDynamicCategory(String name, CustomTable table) {
         Optional<DynamicCategory> optional = dynamicCategoryRepository.findByName(name);
-        if (optional.isPresent()) {
-
-        } else {
-            DynamicCategory category = new DynamicCategory();
-            category.setName(name);
-            category.setCustomTable(table);
-            dynamicCategoryRepository.save(category);
-            return dynamicCategoryRepository.findByName(name)
-                    .orElseThrow(() -> new ApiRequestException("Could not find dynamic category with name " + name));
-        }
+        String finalName;
+        finalName = optional.map(dynamicCategory -> manipulateName(dynamicCategory.getName())).orElse(name);
+        DynamicCategory category = new DynamicCategory();
+        category.setName(name);
+        category.setCustomTable(table);
+        dynamicCategoryRepository.save(category);
+        return dynamicCategoryRepository.findByName(name)
+                .orElseThrow(() -> new ApiRequestException("Could not find dynamic category with name " + name));
     }
 
     @Transactional
@@ -50,13 +48,11 @@ public class DynamicCategoryService {
 
     private String manipulateName(String name) {
         if (name.matches(".*\\.[0-9]+$")) {
-            // String has a "." followed by a number at the end
             int lastIndex = name.lastIndexOf('.');
             String base = name.substring(0, lastIndex);
             int number = Integer.parseInt(name.substring(lastIndex + 1)) + 1;
             return base + "." + number;
         } else {
-            // String doesn't have the desired format, add ".1" at the end
             return name + ".1";
         }
     }
