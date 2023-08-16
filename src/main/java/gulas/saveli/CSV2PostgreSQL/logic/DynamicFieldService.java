@@ -18,7 +18,7 @@ public class DynamicFieldService {
     @Autowired
     private final DynamicFieldRepository dynamicFieldRepository;
 
-    public void createAndSaveDynamicField(String value, DynamicCategory category) {
+    public void createAndSaveDynamicFields(List<String> values, DynamicCategory category) { //REDO
         DynamicField dynamicField = new DynamicField();
         dynamicField.setValue(value);
         dynamicField.setDynamicCategory(category);
