@@ -25,14 +25,13 @@ public class DynamicCategoryService {
         if (optional.isPresent()) {
 
         } else {
-
+            DynamicCategory category = new DynamicCategory();
+            category.setName(name);
+            category.setCustomTable(table);
+            dynamicCategoryRepository.save(category);
+            return dynamicCategoryRepository.findByName(name)
+                    .orElseThrow(() -> new ApiRequestException("Could not find dynamic category with name " + name));
         }
-        DynamicCategory category = new DynamicCategory();
-        category.setName(name);
-        category.setCustomTable(table);
-        dynamicCategoryRepository.save(category);
-        return dynamicCategoryRepository.findByName(name)
-                .orElseThrow(() -> new ApiRequestException("Could not find dynamic category with name " + name));
     }
 
     @Transactional
