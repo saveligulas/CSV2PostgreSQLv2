@@ -25,6 +25,8 @@ public class TestConfig {
     private final CustomTableRepository customTableRepository;
     @Autowired
     private final DynamicCategoryRepository dynamicCategoryRepository;
+    @Autowired
+    private final DynamicFieldRepository dynamicFieldRepository;
 
     @Autowired
     private final CustomTableService customTableService;
@@ -40,13 +42,14 @@ public class TestConfig {
     @Bean
     CommandLineRunner commandLineRunner() {
         return args -> {
-            CustomTable table = customTableRepository.findById(302L)
-                    .orElseThrow(() -> new IllegalStateException("No table found"));
-            System.out.println(table.toString());
-            List<DynamicCategory> categories = table.getDynamicCategories();
-            for(DynamicCategory category : categories) {
-                System.out.println(category.getName().toString() + ", ");
-            }
+            d
+//            CustomTable table = customTableRepository.findById(302L)
+//                    .orElseThrow(() -> new IllegalStateException("No table found"));
+//            System.out.println(table.toString());
+//            List<DynamicCategory> categories = table.getDynamicCategories();
+//            for(DynamicCategory category : categories) {
+//                System.out.println(category.getName().toString() + ", ");
+//            }
         };
     }
 }
