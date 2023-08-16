@@ -4,6 +4,7 @@ import au.com.bytecode.opencsv.CSVReader;
 import gulas.saveli.CSV2PostgreSQL.logic.CustomTableService;
 import gulas.saveli.CSV2PostgreSQL.logic.DynamicCategoryService;
 import gulas.saveli.CSV2PostgreSQL.logic.DynamicFieldService;
+import gulas.saveli.CSV2PostgreSQL.model.CustomTable;
 import gulas.saveli.CSV2PostgreSQL.repo.CustomTableRepository;
 import gulas.saveli.CSV2PostgreSQL.repo.DynamicCategoryRepository;
 import lombok.RequiredArgsConstructor;
@@ -56,7 +57,7 @@ public class CSVReaderService {
                     }
                 }
             }
-            customTableService.createAndSaveCustomTable(fileNameWithoutExtension, "csv");
+            CustomTable table = customTableService.createSaveAndGetCustomTable(fileNameWithoutExtension, "csv");
 
         } catch (IOException e) {
             e.printStackTrace();
