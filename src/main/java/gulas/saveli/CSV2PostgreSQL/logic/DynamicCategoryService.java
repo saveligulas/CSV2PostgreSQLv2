@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -19,11 +20,16 @@ public class DynamicCategoryService {
     @Autowired
     private final DynamicCategoryRepository dynamicCategoryRepository;
 
-    public void createAndSaveDynamicCategory(String name, CustomTable table) {
+    public void createSaveAndGetDynamicCategory(String name, CustomTable table) {
+        Optional<DynamicCategory> optional = dynamicCategoryRepository.findByName(name);
+        if (optional.isPresent()) {
+
+        }
         DynamicCategory category = new DynamicCategory();
         category.setName(name);
         category.setCustomTable(table);
         dynamicCategoryRepository.save(category);
+        dynamicCategoryRepository.findByName()
     }
 
     @Transactional
@@ -38,5 +44,18 @@ public class DynamicCategoryService {
         DynamicCategory category = dynamicCategoryRepository.findById(id)
                 .orElseThrow(() -> new ApiRequestException("Dynamic category with id " + id + " not found"));
         category.addDynamicField(field);
+    }
+
+    private String manipulateName(String name) {
+        if (name.matches(".*\\.[0-9]+$")) {
+            // String has a "." followed by a number at the end
+            int lastIndex = name.lastIndexOf('.');
+            String base = name.substring(0, lastIndex);
+            int number = Integer.parseInt(name.substring(lastIndex + 1)) + 1;
+            return base + "." + number;
+        } else {
+            // String doesn't have the desired format, add ".1" at the end
+            return name + ".1";
+        }
     }
 }
