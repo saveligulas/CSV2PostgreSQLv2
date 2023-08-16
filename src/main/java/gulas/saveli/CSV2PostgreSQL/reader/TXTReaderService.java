@@ -40,14 +40,12 @@ public class TXTReaderService {
         String categoryName = "TXT_Body";
         try {
             CustomTable table = customTableService.createSaveAndGetCustomTable(fileNameWithoutExtension, "txt");
-            dynamicCategoryService.createAndSaveDynamicCategory(categoryName, table);
+            DynamicCategory category = dynamicCategoryService.createSaveAndGetDynamicCategory(categoryName, table);
             String line;
             StringBuilder builder = new StringBuilder();
             while ((line = bufferedReader.readLine()) != null) {
                 builder.append(line).append("\n");
             }
-            DynamicCategory category = dynamicCategoryRepository.findByName(categoryName)
-                    .orElseThrow(() -> new ApiRequestException("Could not find dynamic category " + categoryName));
             String text = builder.toString();
             dynamicFieldService.createAndSaveDynamicField(text, category);
         } catch (IOException e) {
