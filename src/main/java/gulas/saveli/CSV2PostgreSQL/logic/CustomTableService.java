@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -25,13 +26,16 @@ public class CustomTableService {
     private final DynamicCategoryRepository dynamicCategoryRepository;
 
     public CustomTable createSaveAndGetCustomTable(String name, String extension) {
+        Optional<CustomTable> optional = customTableRepository.findByName(name);
+        if (optional.isPresent()) {
+            throw new ApiRequestException("Custom table " + name + " already exists");
+        }
         CustomTable table = new CustomTable();
         table.setName(name);
         table.setExtension(extension);
         customTableRepository.save(table);
         return customTableRepository.findByName(name)
                 .orElseThrow(() -> new ApiRequestException("Could not find CustomTable with name " + name));
-
     }
 
     @Transactional
