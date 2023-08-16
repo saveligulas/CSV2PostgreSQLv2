@@ -60,6 +60,10 @@ public class CSVReaderService {
                 CustomTable table = customTableService.createSaveAndGetCustomTable(fileNameWithoutExtension, "csv");
                 for (String header : headers) {
                     DynamicCategory category = categoryService.createSaveAndGetDynamicCategory(header, table);
+                    List<String> fieldStrings = columns.get(header);
+                    for (String field : fieldStrings) {
+                        fieldService.createAndSaveDynamicField(field, category);
+                    }
                 }
             }
         } catch (IOException e) {
