@@ -21,7 +21,7 @@ public class CustomTable {
     private String name;
     private String extension;
 
-    @OneToMany(mappedBy = "customTable", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "customTable", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     @OrderColumn
     @ToString.Exclude
     private List<DynamicCategory> dynamicCategories = new ArrayList<>();
