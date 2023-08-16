@@ -20,16 +20,18 @@ public class DynamicCategoryService {
     @Autowired
     private final DynamicCategoryRepository dynamicCategoryRepository;
 
-    public void createSaveAndGetDynamicCategory(String name, CustomTable table) {
+    public DynamicCategory createSaveAndGetDynamicCategory(String name, CustomTable table) {
         Optional<DynamicCategory> optional = dynamicCategoryRepository.findByName(name);
         if (optional.isPresent()) {
+
+        } else {
 
         }
         DynamicCategory category = new DynamicCategory();
         category.setName(name);
         category.setCustomTable(table);
         dynamicCategoryRepository.save(category);
-        dynamicCategoryRepository.findByName()
+        dynamicCategoryRepository.findByName(name);
     }
 
     @Transactional
