@@ -21,13 +21,14 @@ public class DynamicCategoryService {
     private final DynamicCategoryRepository dynamicCategoryRepository;
 
     public void saveDynamicCategories(List<String> names, CustomTable table) { //REDO
+        String finalName;
         for (String name : names) {
-            DynamicCategory category
+            DynamicCategory category = new DynamicCategory(); //
+            Optional<DynamicCategory> optional = dynamicCategoryRepository.findByName(name);
+            finalName = optional.map(dynamicCategory -> manipulateName(dynamicCategory.getName())).orElse(name);
+            category.setName(name);
         }
 
-        Optional<DynamicCategory> optional = dynamicCategoryRepository.findByName(name);
-        String finalName;
-        finalName = optional.map(dynamicCategory -> manipulateName(dynamicCategory.getName())).orElse(name);
         DynamicCategory category = new DynamicCategory();
         category.setName(finalName);
         category.setCustomTable(table);
