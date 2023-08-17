@@ -20,8 +20,10 @@ public class DynamicCategoryService {
     @Autowired
     private final DynamicCategoryRepository dynamicCategoryRepository;
 
-    public DynamicCategory createSaveAndGetDynamicCategories(List<String> names, CustomTable table) { //REDO
-        for (String name : names)
+    public void saveDynamicCategories(List<String> names, CustomTable table) { //REDO
+        for (String name : names) {
+            DynamicCategory category
+        }
 
         Optional<DynamicCategory> optional = dynamicCategoryRepository.findByName(name);
         String finalName;
