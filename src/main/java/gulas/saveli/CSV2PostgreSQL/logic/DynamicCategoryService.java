@@ -20,20 +20,21 @@ import java.util.Optional;
 public class DynamicCategoryService {
     @Autowired
     private final DynamicCategoryRepository dynamicCategoryRepository;
+    private final DynamicFieldRepository dynamicFieldRepository;
 
     public void saveDynamicCategories(List<String> names, CustomTable table) { //REDO
         String finalName;
         List<DynamicCategory> dynamicCategories = new ArrayList<>();
         for (String name : names) {
             DynamicCategory category = new DynamicCategory(); //TODO put in seperate method to have option to save a single dynamic category
-            Optional<DynamicCategory> optional = dynamicCategoryRepository.findByName(name);
-            finalName = optional.map(dynamicCategory -> manipulateName(dynamicCategory.getName())).orElse(name);
             category.setName(name);
             category.setCustomTable(table);
             dynamicCategories.add(category);
         }
         for (DynamicCategory dynamicCategory : dynamicCategories) {
             Optional<DynamicCategory> optional = dynamicCategoryRepository.findByName(dynamicCategory.getName());
+            optional.ifPresent(category -> dynamicCategory.setName(manipulateName(category.getName()));
+            dynamicCategoryRepository.save(dynamicCategory);
         }
     }
 
