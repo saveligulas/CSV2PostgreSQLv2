@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,11 +23,14 @@ public class DynamicCategoryService {
 
     public void saveDynamicCategories(List<String> names, CustomTable table) { //REDO
         String finalName;
+        List<DynamicCategory> dynamicCategories = new ArrayList<>();
         for (String name : names) {
             DynamicCategory category = new DynamicCategory(); //TODO put in seperate method to have option to save a single dynamic category
             Optional<DynamicCategory> optional = dynamicCategoryRepository.findByName(name);
             finalName = optional.map(dynamicCategory -> manipulateName(dynamicCategory.getName())).orElse(name);
             category.setName(name);
+            category.setCustomTable(table);
+
         }
 
         DynamicCategory category = new DynamicCategory();
