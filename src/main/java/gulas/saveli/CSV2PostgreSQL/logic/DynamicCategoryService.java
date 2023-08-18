@@ -30,15 +30,11 @@ public class DynamicCategoryService {
             finalName = optional.map(dynamicCategory -> manipulateName(dynamicCategory.getName())).orElse(name);
             category.setName(name);
             category.setCustomTable(table);
-
+            dynamicCategories.add(category);
         }
-
-        DynamicCategory category = new DynamicCategory();
-        category.setName(finalName);
-        category.setCustomTable(table);
-        dynamicCategoryRepository.save(category);
-        return dynamicCategoryRepository.findByName(finalName)
-                .orElseThrow(() -> new ApiRequestException("Could not find dynamic category with name " + finalName));
+        for (DynamicCategory dynamicCategory : dynamicCategories) {
+            Optional<DynamicCategory> optional = dynamicCategoryRepository.findByName(dynamicCategory.getName());
+        }
     }
 
     @Transactional
