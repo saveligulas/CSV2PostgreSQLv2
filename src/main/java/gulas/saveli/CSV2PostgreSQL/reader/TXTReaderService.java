@@ -37,19 +37,19 @@ public class TXTReaderService {
     public void readAndSaveTxtFile(String fileNameWithoutExtension) throws FileNotFoundException {
         FileReader fileReader = new FileReader(createSourcePath(fileNameWithoutExtension));
         BufferedReader bufferedReader = new BufferedReader(fileReader);
-        String categoryName = "TXT_Body";
-        try {
-            CustomTable table = customTableService.createSaveAndGetCustomTable(fileNameWithoutExtension, "txt");
-            DynamicCategory category = dynamicCategoryService.createSaveAndGetDynamicCategory(categoryName, table);
-            String line;
-            StringBuilder builder = new StringBuilder();
-            while ((line = bufferedReader.readLine()) != null) {
-                builder.append(line).append("\n");
-            }
-            String text = builder.toString();
-            dynamicFieldService.createAndSaveDynamicField(text, category);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        String categoryName = "TXT_Body"; //TODO fix
+//        try {
+//            CustomTable table = customTableService.createSaveAndGetCustomTable(fileNameWithoutExtension, "txt");
+//            DynamicCategory category = dynamicCategoryService.createSaveAndGetDynamicCategory(categoryName, table);
+//            String line;
+//            StringBuilder builder = new StringBuilder();
+//            while ((line = bufferedReader.readLine()) != null) {
+//                builder.append(line).append("\n");
+//            }
+//            String text = builder.toString();
+//            dynamicFieldService.createAndSaveDynamicField(text, category);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 }
