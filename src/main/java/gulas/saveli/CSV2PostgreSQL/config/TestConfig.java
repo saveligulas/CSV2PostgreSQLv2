@@ -17,6 +17,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.List;
+import java.util.Optional;
 
 @Configuration
 @RequiredArgsConstructor
@@ -42,7 +43,8 @@ public class TestConfig {
     @Bean
     CommandLineRunner commandLineRunner() {
         return args -> {
-            csvReaderService.readAndSaveCSVFile("organizations-100");
+//            Optional<CustomTable> optional = customTableRepository.findById(352L);
+//            optional.ifPresent(body -> System.out.println(body.getDynamicCategories()));
         };
     }
 }

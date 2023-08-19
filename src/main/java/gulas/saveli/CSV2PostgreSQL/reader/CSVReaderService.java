@@ -68,6 +68,7 @@ public class CSVReaderService {
                     for (String field : fieldStrings) {
                         DynamicField dynamicField = new DynamicField();
                         dynamicField.setValue(field);
+                        dynamicField.setDynamicCategory(category);
                         unsavedFields.add(dynamicField);
                     }
                     category.setDynamicFields(unsavedFields);

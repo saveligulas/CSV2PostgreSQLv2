@@ -13,14 +13,13 @@ import java.util.List;
 @Table(name= "dynamic_field", schema= "converter")
 public class DynamicField {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long id;
 
     @ManyToOne
     @JoinColumn(name = "dynamic_category_id")
     private DynamicCategory dynamicCategory;
 
-    @Column(columnDefinition = "TEXT")
     private String value;
 
 }
