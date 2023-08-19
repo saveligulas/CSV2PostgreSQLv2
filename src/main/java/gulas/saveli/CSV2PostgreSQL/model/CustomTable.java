@@ -13,7 +13,7 @@ import java.util.Map;
 @Setter
 @ToString
 @RequiredArgsConstructor
-@Table(name= "custom_table", schema= "converter")
+@Table(name= "custom_table", schema= "converter", uniqueConstraints = @UniqueConstraint(columnNames = {"name"}))
 public class CustomTable {
     @Id
     @GeneratedValue
