@@ -58,8 +58,13 @@ public class CSVReaderService {
                     }
                 }
                 CustomTable table = customTableService.createSaveAndGetCustomTable(fileNameWithoutExtension, "csv");
+                categoryService.saveDynamicCategories(List.of(headers), table);
+                List<DynamicCategory> dynamicCategories = table.getDynamicCategories();
+                List<String> categoryNamesFromTable = new ArrayList<>();
+                for (DynamicCategory dynamicCategory : dynamicCategories) {
+
+                }
                 for (String header : headers) {
-                    DynamicCategory category = categoryService.createSaveAndGetDynamicCategory(header, table);
                     List<String> fieldStrings = columns.get(header);
                     for (String field : fieldStrings) {
                         fieldService.createAndSaveDynamicField(field, category);
