@@ -48,7 +48,7 @@ public class DynamicCategoryService {
         category.addDynamicField(field);
     }
 
-    protected String manipulateName(String name) {
+    protected String manipulateName(String name) { //TODO implement AtomicIntegers and extract Method to seperate Service
         if (name.matches(".*\\.[0-9]+$")) {
             int lastIndex = name.lastIndexOf('.');
             String base = name.substring(0, lastIndex);
