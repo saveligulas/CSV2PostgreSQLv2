@@ -35,9 +35,10 @@ public class DynamicCategoryService {
         }
         for (DynamicCategory dynamicCategory : dynamicCategories) {
             Optional<DynamicCategory> optional = dynamicCategoryRepository.findByName(dynamicCategory.getName());
-            optional.ifPresent(category -> dynamicCategory.setName(manipulateName(category.getName()));
+            optional.ifPresent(category -> dynamicCategory.setName(manipulateName(category.getName())));
         }
         table.setDynamicCategories(dynamicCategories);
+        customTableRepository.save(table);
     }
 
     @Transactional
