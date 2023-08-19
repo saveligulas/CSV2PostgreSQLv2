@@ -6,6 +6,7 @@ import gulas.saveli.CSV2PostgreSQL.logic.DynamicCategoryService;
 import gulas.saveli.CSV2PostgreSQL.logic.DynamicFieldService;
 import gulas.saveli.CSV2PostgreSQL.model.CustomTable;
 import gulas.saveli.CSV2PostgreSQL.model.DynamicCategory;
+import gulas.saveli.CSV2PostgreSQL.model.DynamicField;
 import gulas.saveli.CSV2PostgreSQL.repo.CustomTableRepository;
 import gulas.saveli.CSV2PostgreSQL.repo.DynamicCategoryRepository;
 import lombok.RequiredArgsConstructor;
@@ -62,11 +63,15 @@ public class CSVReaderService {
                 for (String header : headers) {
                     DynamicCategory category = new DynamicCategory();
                     category.setName(header);
-                    unsavedCategories.add(category);
                     List<String> fieldStrings = columns.get(header);
+                    List<DynamicField> unsavedFields = new ArrayList<>();
                     for (String field : fieldStrings) {
-                        fieldService.createAndSaveDynamicField(field, category);
+                        DynamicField dynamicField = new DynamicField();
+                        dynamicField.setValue(field);
+                        unsavedFields.add(dynamicField);
                     }
+                    category.setDynamicFields(unsavedFields);
+                    unsavedCategories.add(category);
                 }
             }
         } catch (IOException e) {
