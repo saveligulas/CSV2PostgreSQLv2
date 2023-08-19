@@ -24,7 +24,7 @@ public class DynamicCategoryService {
     @Autowired
     private final CustomTableRepository customTableRepository;
 
-    public void saveDynamicCategories(List<String> names, CustomTable table) { //REDO
+    public void saveDynamicCategories(List<DynamicCategory> categories, CustomTable table) {
         String finalName;
         List<DynamicCategory> dynamicCategories = new ArrayList<>();
         for (String name : names) {
