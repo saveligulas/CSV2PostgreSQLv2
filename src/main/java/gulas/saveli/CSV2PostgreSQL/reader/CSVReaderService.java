@@ -73,6 +73,7 @@ public class CSVReaderService {
                     category.setDynamicFields(unsavedFields);
                     unsavedCategories.add(category);
                 }
+                categoryService.saveDynamicCategories(unsavedCategories, table);
             }
         } catch (IOException e) {
             e.printStackTrace();
