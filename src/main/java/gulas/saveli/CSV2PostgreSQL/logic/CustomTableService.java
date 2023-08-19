@@ -3,7 +3,6 @@ package gulas.saveli.CSV2PostgreSQL.logic;
 import gulas.saveli.CSV2PostgreSQL.errorHandler.handler.ApiRequestException;
 import gulas.saveli.CSV2PostgreSQL.model.CustomTable;
 import gulas.saveli.CSV2PostgreSQL.model.DynamicCategory;
-import gulas.saveli.CSV2PostgreSQL.model.DynamicField;
 import gulas.saveli.CSV2PostgreSQL.repo.CustomTableRepository;
 import gulas.saveli.CSV2PostgreSQL.repo.DynamicCategoryRepository;
 import gulas.saveli.CSV2PostgreSQL.repo.DynamicFieldRepository;
@@ -12,12 +11,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicReference;
 
 @Service
 @RequiredArgsConstructor
 public class CustomTableService {
+    @Autowired
+    private final DynamicCategoryService categoryService;
     @Autowired
     private final CustomTableRepository customTableRepository;
     @Autowired
@@ -27,11 +28,9 @@ public class CustomTableService {
 
     public CustomTable createSaveAndGetCustomTable(String name, String extension) {
         Optional<CustomTable> optional = customTableRepository.findByName(name);
-        if (optional.isPresent()) {
-            throw new ApiRequestException("Custom table " + name + " already exists");
-        }
         CustomTable table = new CustomTable();
         table.setName(name);
+        optional.ifPresent(body -> table.setName(categoryService.manipulateName(body.getName())));
         table.setExtension(extension);
         customTableRepository.save(table);
         return customTableRepository.findByName(name)
