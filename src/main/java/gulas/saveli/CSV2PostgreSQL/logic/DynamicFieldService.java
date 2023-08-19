@@ -11,17 +11,19 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class DynamicFieldService {
     @Autowired
     private final DynamicFieldRepository dynamicFieldRepository;
+    @Autowired
+    private final DynamicCategoryRepository dynamicCategoryRepository;
 
     public void saveDynamicFields(List<DynamicField> fields, DynamicCategory category) { //REDO
-        for(DynamicField field : fields) {
-            Optional<DynamicField>
-        }
+        category.setDynamicFields(fields);
+        dynamicCategoryRepository.save(category);
     }
 
     @Transactional
