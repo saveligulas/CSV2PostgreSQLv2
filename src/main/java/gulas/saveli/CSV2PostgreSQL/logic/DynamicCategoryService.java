@@ -4,6 +4,7 @@ import gulas.saveli.CSV2PostgreSQL.errorHandler.handler.ApiRequestException;
 import gulas.saveli.CSV2PostgreSQL.model.CustomTable;
 import gulas.saveli.CSV2PostgreSQL.model.DynamicCategory;
 import gulas.saveli.CSV2PostgreSQL.model.DynamicField;
+import gulas.saveli.CSV2PostgreSQL.repo.CustomTableRepository;
 import gulas.saveli.CSV2PostgreSQL.repo.DynamicCategoryRepository;
 import gulas.saveli.CSV2PostgreSQL.repo.DynamicFieldRepository;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +21,8 @@ import java.util.Optional;
 public class DynamicCategoryService {
     @Autowired
     private final DynamicCategoryRepository dynamicCategoryRepository;
-    private final DynamicFieldRepository dynamicFieldRepository;
+    @Autowired
+    private final CustomTableRepository customTableRepository;
 
     public void saveDynamicCategories(List<String> names, CustomTable table) { //REDO
         String finalName;
