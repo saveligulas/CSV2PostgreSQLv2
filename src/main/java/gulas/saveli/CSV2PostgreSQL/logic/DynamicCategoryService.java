@@ -47,7 +47,7 @@ public class DynamicCategoryService {
         category.addDynamicField(field);
     }
 
-    public String manipulateName(String name) {
+    protected String manipulateName(String name) {
         if (name.matches(".*\\.[0-9]+$")) {
             int lastIndex = name.lastIndexOf('.');
             String base = name.substring(0, lastIndex);
