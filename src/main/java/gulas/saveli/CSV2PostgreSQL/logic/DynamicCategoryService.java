@@ -27,7 +27,7 @@ public class DynamicCategoryService {
     public void saveDynamicCategories(List<DynamicCategory> categories, CustomTable table) {
         for (DynamicCategory category : categories) {
             Optional<DynamicCategory> optional = dynamicCategoryRepository.findByName(dynamicCategory.getName());
-            optional.ifPresent(category -> dynamicCategory.setName(manipulateName(category.getName())));
+            optional.ifPresent(body -> category.setName(manipulateName(body.getName())));
             category.setName(name);
             category.setCustomTable(table);
             dynamicCategories.add(category);
