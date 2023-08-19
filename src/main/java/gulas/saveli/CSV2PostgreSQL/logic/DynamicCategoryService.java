@@ -25,17 +25,12 @@ public class DynamicCategoryService {
     private final CustomTableRepository customTableRepository;
 
     public void saveDynamicCategories(List<DynamicCategory> categories, CustomTable table) {
-        String finalName;
-        List<DynamicCategory> dynamicCategories = new ArrayList<>();
-        for (String name : names) {
-            DynamicCategory category = new DynamicCategory(); //TODO put in seperate method to have option to save a single dynamic category
+        for (DynamicCategory category : categories) {
+            Optional<DynamicCategory> optional = dynamicCategoryRepository.findByName(dynamicCategory.getName());
+            optional.ifPresent(category -> dynamicCategory.setName(manipulateName(category.getName())));
             category.setName(name);
             category.setCustomTable(table);
             dynamicCategories.add(category);
-        }
-        for (DynamicCategory dynamicCategory : dynamicCategories) {
-            Optional<DynamicCategory> optional = dynamicCategoryRepository.findByName(dynamicCategory.getName());
-            optional.ifPresent(category -> dynamicCategory.setName(manipulateName(category.getName())));
         }
         table.setDynamicCategories(dynamicCategories);
         customTableRepository.save(table);
