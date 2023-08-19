@@ -42,16 +42,7 @@ public class TestConfig {
     @Bean
     CommandLineRunner commandLineRunner() {
         return args -> {
-            dynamicFieldRepository.flush();
-            dynamicCategoryRepository.flush();
-            customTableRepository.flush();
-//            CustomTable table = customTableRepository.findById(302L)
-//                    .orElseThrow(() -> new IllegalStateException("No table found"));
-//            System.out.println(table.toString());
-//            List<DynamicCategory> categories = table.getDynamicCategories();
-//            for(DynamicCategory category : categories) {
-//                System.out.println(category.getName().toString() + ", ");
-//            }
+            
         };
     }
 }
