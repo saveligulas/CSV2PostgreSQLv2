@@ -19,7 +19,7 @@ public class NameManipulatorService {
     private final DistinctNameRepository nameRepository;
 
     public Optional<DynamicCategory> saveUniqueName(DynamicCategory category) {
-        Optional<DistinctName> distinctNameOptional = nameRepository.findByTypeAndName(ModelType.DYNAMIC_CATEGORY.toString(), category.getName());
+        Optional<DistinctName> distinctNameOptional = nameRepository.findByTypeAndName(ModelType.DYNAMIC_CATEGORY, category.getName());
         distinctNameOptional.ifPresent(value -> category.setName(encryptString(value)));
         if (distinctNameOptional.isPresent()) {
             return Optional.of(category);
@@ -33,7 +33,7 @@ public class NameManipulatorService {
     }
 
     public Optional<CustomTable> saveUniqueName(CustomTable table) {
-        Optional<DistinctName> distinctNameOptional = nameRepository.findByTypeAndName(ModelType.CUSTOM_TABLE.toString(), table.getName());
+        Optional<DistinctName> distinctNameOptional = nameRepository.findByTypeAndName(ModelType.CUSTOM_TABLE, table.getName());
         distinctNameOptional.ifPresent(value -> table.setName(encryptString(value)));
         if (distinctNameOptional.isPresent()) {
             return Optional.of(table);
@@ -41,19 +41,19 @@ public class NameManipulatorService {
         DistinctName distinctName = new DistinctName();
         distinctName.setUses(1L);
         distinctName.setName(table.getName());
-        distinctName.setModelType(ModelType.DYNAMIC_CATEGORY);
+        distinctName.setModelType(ModelType.CUSTOM_TABLE);
         nameRepository.save(distinctName);
         return Optional.empty();
     }
 
     public String getOriginalName(DynamicCategory dynamicCategory) {
-        DistinctName distinctName = nameRepository.findByTypeAndName(ModelType.DYNAMIC_CATEGORY.toString(), dynamicCategory.getName())
+        DistinctName distinctName = nameRepository.findByTypeAndName(ModelType.DYNAMIC_CATEGORY, dynamicCategory.getName())
                 .orElseThrow(() -> new ApiRequestException("Could not find the original name"));
         return  decodeString(distinctName);
     }
 
     public String getOriginalName(CustomTable customTable) {
-        DistinctName distinctName = nameRepository.findByTypeAndName(ModelType.CUSTOM_TABLE.toString(), customTable.getName())
+        DistinctName distinctName = nameRepository.findByTypeAndName(ModelType.CUSTOM_TABLE, customTable.getName())
                 .orElseThrow(() -> new ApiRequestException("Could not find the original name"));
         return decodeString(distinctName);
     }
