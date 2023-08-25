@@ -13,7 +13,9 @@ public class DistinctName {
     @Id
     @GeneratedValue
     private Long id;
+
     private Long uses;
+
     @Enumerated(EnumType.STRING)
     private ModelType modelType;
 }
