@@ -32,8 +32,18 @@ public class NameManipulatorService {
         return Optional.empty();
     }
 
-    public void saveUniqueName(CustomTable table) {
-
+    public Optional<CustomTable> saveUniqueName(CustomTable table) {
+        Optional<DistinctName> distinctNameOptional = nameRepository.findByTypeAndName(ModelType.CUSTOM_TABLE.toString(), table.getName());
+        distinctNameOptional.ifPresent(value -> table.setName(encryptString(value)));
+        if (distinctNameOptional.isPresent()) {
+            return Optional.of(table);
+        }
+        DistinctName distinctName = new DistinctName();
+        distinctName.setUses(1L);
+        distinctName.setName(table.getName());
+        distinctName.setModelType(ModelType.DYNAMIC_CATEGORY);
+        nameRepository.save(distinctName);
+        return Optional.empty();
     }
 
     public String getOriginalName(DynamicCategory dynamicCategory) {
