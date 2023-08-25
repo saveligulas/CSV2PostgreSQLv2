@@ -23,6 +23,7 @@ public class NameManipulatorService {
         if (distinctNameOptional.isPresent()) {
             return Optional.of(category);
         }
+
         return Optional.empty();
     }
 
@@ -39,7 +40,9 @@ public class NameManipulatorService {
     }
 
     private String encryptString(DistinctName distinctName) {
-
+        Long uses = distinctName.getUses();
+        distinctName.setUses(uses + 1L);
+        nameRepository.save(distinctName);
     }
 
     private String decodeString(DistinctName distinctName) {
