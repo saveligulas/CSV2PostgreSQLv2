@@ -16,8 +16,13 @@ public class NameManipulatorService {
     @Autowired
     private final DistinctNameRepository nameRepository;
 
-    public void saveUniqueName(String name) {
-        Optional<DistinctName> distinctNameOptional = nameRepository.findBy
+    public void saveUniqueName(DynamicCategory category) {
+
+        Optional<DistinctName> distinctNameOptional = nameRepository.findByTypeAndName()
+    }
+
+    public void saveUniqueName(CustomTable table) {
+
     }
 
     public String getOriginalName(DynamicCategory dynamicCategory) {
