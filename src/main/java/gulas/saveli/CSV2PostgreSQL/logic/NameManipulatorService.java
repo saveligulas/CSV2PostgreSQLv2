@@ -48,7 +48,7 @@ public class NameManipulatorService {
         nameRepository.save(distinctName);
 
         String originalName = distinctName.getName();
-
+        return originalName + ".v" + uses.toString();
     }
 
     private String decodeString(DistinctName distinctName) {
