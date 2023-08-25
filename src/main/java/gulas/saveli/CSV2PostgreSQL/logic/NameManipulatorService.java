@@ -20,6 +20,9 @@ public class NameManipulatorService {
     public Optional<DynamicCategory> saveUniqueName(DynamicCategory category) {
         Optional<DistinctName> distinctNameOptional = nameRepository.findByTypeAndName(ModelType.DYNAMIC_CATEGORY.toString(), category.getName());
         distinctNameOptional.ifPresent(value -> category.setName(encryptString(value)));
+        if (distinctNameOptional.isPresent()) {
+            return Optional.of(category);
+        }
         return Optional.empty();
     }
 
