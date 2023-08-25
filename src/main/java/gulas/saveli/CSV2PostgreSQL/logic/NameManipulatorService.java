@@ -10,4 +10,16 @@ import org.springframework.stereotype.Service;
 public class NameManipulatorService {
     @Autowired
     private final DistinctNameRepository nameRepository;
+
+    public void saveUniqueName(String name) {
+
+    }
+
+    private String encryptString(String decryptedString) {
+
+    }
+
+    private String decodeString(String encryptedString) {
+
+    }
 }
