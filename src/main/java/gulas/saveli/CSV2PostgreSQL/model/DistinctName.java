@@ -14,6 +14,7 @@ public class DistinctName {
     @GeneratedValue
     private Long id;
 
+    private String name;
     private Long uses;
 
     @Enumerated(EnumType.STRING)
