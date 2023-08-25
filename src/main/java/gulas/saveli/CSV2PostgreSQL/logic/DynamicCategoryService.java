@@ -20,6 +20,9 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class DynamicCategoryService {
     @Autowired
+    private final NameManipulatorService nameManipulatorService;
+
+    @Autowired
     private final DynamicCategoryRepository dynamicCategoryRepository;
     @Autowired
     private final CustomTableRepository customTableRepository;
