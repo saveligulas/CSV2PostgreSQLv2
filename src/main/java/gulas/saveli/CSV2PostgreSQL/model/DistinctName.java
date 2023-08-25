@@ -9,6 +9,7 @@ import lombok.*;
 @Setter
 @ToString
 @RequiredArgsConstructor
+@Table(name = "distinct_name", schema = "converter")
 public class DistinctName {
     @Id
     @GeneratedValue
