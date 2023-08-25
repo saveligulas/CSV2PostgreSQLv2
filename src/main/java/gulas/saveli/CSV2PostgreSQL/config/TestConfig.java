@@ -43,7 +43,7 @@ public class TestConfig {
     @Bean
     CommandLineRunner commandLineRunner() {
         return args -> {
-            csvReaderService.readAndSaveCSVFile("organizations-100");
+            csvReaderService.readAndSaveCSVFile("timezone");
 //            Optional<CustomTable> optional = customTableRepository.findById(352L);
 //            optional.ifPresent(body -> System.out.println(body.getDynamicCategories()));
         };
