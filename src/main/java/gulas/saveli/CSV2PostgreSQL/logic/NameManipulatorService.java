@@ -1,5 +1,6 @@
 package gulas.saveli.CSV2PostgreSQL.logic;
 
+import gulas.saveli.CSV2PostgreSQL.errorHandler.handler.ApiRequestException;
 import gulas.saveli.CSV2PostgreSQL.model.CustomTable;
 import gulas.saveli.CSV2PostgreSQL.model.DistinctName;
 import gulas.saveli.CSV2PostgreSQL.model.DynamicCategory;
@@ -35,11 +36,15 @@ public class NameManipulatorService {
     }
 
     public String getOriginalName(DynamicCategory dynamicCategory) {
-
+        DistinctName distinctName = nameRepository.findByTypeAndName(ModelType.DYNAMIC_CATEGORY.toString(), dynamicCategory.getName())
+                .orElseThrow(() -> new ApiRequestException("Could not find the original name"));
+        return  decodeString(distinctName);
     }
 
     public String getOriginalName(CustomTable customTable) {
-
+        DistinctName distinctName = nameRepository.findByTypeAndName(ModelType.CUSTOM_TABLE.toString(), customTable.getName())
+                .orElseThrow(() -> new ApiRequestException("Could not find the original name"));
+        return decodeString(distinctName);
     }
 
     private String encryptString(DistinctName distinctName) {
