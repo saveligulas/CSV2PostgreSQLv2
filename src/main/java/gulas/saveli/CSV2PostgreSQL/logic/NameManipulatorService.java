@@ -52,6 +52,6 @@ public class NameManipulatorService {
     }
 
     private String decodeString(DistinctName distinctName) {
-
+        return distinctName.getName().replaceAll("\\.v\\d+$", "");
     }
 }
