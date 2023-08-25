@@ -23,7 +23,10 @@ public class NameManipulatorService {
         if (distinctNameOptional.isPresent()) {
             return Optional.of(category);
         }
-
+        DistinctName distinctName = new DistinctName();
+        distinctName.setUses(1L);
+        distinctName.setName(category.getName());
+        nameRepository.save(distinctName);
         return Optional.empty();
     }
 
@@ -43,6 +46,9 @@ public class NameManipulatorService {
         Long uses = distinctName.getUses();
         distinctName.setUses(uses + 1L);
         nameRepository.save(distinctName);
+
+        String originalName = distinctName.getName();
+
     }
 
     private String decodeString(DistinctName distinctName) {
