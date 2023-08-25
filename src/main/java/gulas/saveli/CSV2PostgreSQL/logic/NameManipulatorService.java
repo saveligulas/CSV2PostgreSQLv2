@@ -27,6 +27,7 @@ public class NameManipulatorService {
         DistinctName distinctName = new DistinctName();
         distinctName.setUses(1L);
         distinctName.setName(category.getName());
+        distinctName.setModelType(ModelType.DYNAMIC_CATEGORY);
         nameRepository.save(distinctName);
         return Optional.empty();
     }
