@@ -20,6 +20,9 @@ public class CustomTableService {
     @Autowired
     private final DynamicCategoryService categoryService;
     @Autowired
+    private final NameManipulatorService nameManipulatorService;
+
+    @Autowired
     private final CustomTableRepository customTableRepository;
     @Autowired
     private final DynamicFieldRepository dynamicFieldRepository;
@@ -27,11 +30,15 @@ public class CustomTableService {
     private final DynamicCategoryRepository dynamicCategoryRepository;
 
     public CustomTable createSaveAndGetCustomTable(String name, String extension) {
-        Optional<CustomTable> optional = customTableRepository.findByName(name);
         CustomTable table = new CustomTable();
         table.setName(name);
-        optional.ifPresent(body -> table.setName(categoryService.manipulateName(body.getName())));
         table.setExtension(extension);
+        Optional<CustomTable> optional = nameManipulatorService.saveUniqueName(table);
+        if(optional.isPresent()) {
+            customTableRepository.save(optional.get());
+            return customTableRepository.findByName(optional.get().getName())
+                    .orElseThrow(() -> new ApiRequestException("Could not find CustomTable with name " + name));
+        }
         customTableRepository.save(table);
         return customTableRepository.findByName(name)
                 .orElseThrow(() -> new ApiRequestException("Could not find CustomTable with name " + name));
