@@ -14,7 +14,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class NameManipulatorService { //TODO: implement safe guards if a unique name has .v at the end of it with a number as it can cause database issues
+public class NameManipulatorService {
     @Autowired
     private final DistinctNameRepository nameRepository;
 
