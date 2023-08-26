@@ -13,6 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Service
 @RequiredArgsConstructor
@@ -30,6 +32,13 @@ public class CustomTableService {
     private final DynamicCategoryRepository dynamicCategoryRepository;
 
     public CustomTable createSaveAndGetCustomTable(String name, String extension) {
+        String pattern = "\\.v\\d+$";
+        Pattern r = Pattern.compile(pattern);
+        Matcher m = r.matcher(name);
+        if(m.find()) {
+            throw new ApiRequestException("CustomTable name ends with a .v followed by a number");
+        }
+
         CustomTable table = new CustomTable();
         table.setName(name);
         table.setExtension(extension);
