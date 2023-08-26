@@ -27,7 +27,7 @@ public class DynamicCategoryService {
     @Autowired
     private final CustomTableRepository customTableRepository;
 
-    public void saveDynamicCategories(List<DynamicCategory> categories, CustomTable table) {
+    public void saveDynamicCategories(List<DynamicCategory> categories, CustomTable table) { //TODO somehow fix issue if category name has .v with number
         for (DynamicCategory category : categories) {
             Optional<DynamicCategory> optional = nameManipulatorService.saveUniqueName(category);
             optional.ifPresent(value -> category.setName(value.getName()));
