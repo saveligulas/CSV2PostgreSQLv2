@@ -6,6 +6,7 @@ import gulas.saveli.CSV2PostgreSQL.logic.DynamicCategoryService;
 import gulas.saveli.CSV2PostgreSQL.logic.DynamicFieldService;
 import gulas.saveli.CSV2PostgreSQL.model.CustomTable;
 import gulas.saveli.CSV2PostgreSQL.model.DynamicCategory;
+import gulas.saveli.CSV2PostgreSQL.model.DynamicField;
 import gulas.saveli.CSV2PostgreSQL.repo.CustomTableRepository;
 import gulas.saveli.CSV2PostgreSQL.repo.DynamicCategoryRepository;
 import lombok.RequiredArgsConstructor;
@@ -49,6 +50,10 @@ public class TXTReaderService {
                 builder.append(line).append("\n");
             }
             String text = builder.toString();
+            DynamicField field = new DynamicField();
+            field.setValue(text);
+            field.setDynamicCategory(category);
+            dynamicCategoryService.saveDynamicCategories(List.of(category), );
         } catch (IOException e) {
             e.printStackTrace();
         }
