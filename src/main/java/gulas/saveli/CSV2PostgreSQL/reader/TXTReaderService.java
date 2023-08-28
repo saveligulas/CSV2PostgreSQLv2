@@ -49,7 +49,6 @@ public class TXTReaderService {
                 builder.append(line).append("\n");
             }
             String text = builder.toString();
-            dynamicFieldService.createAndSaveDynamicField(text, category);
         } catch (IOException e) {
             e.printStackTrace();
         }
